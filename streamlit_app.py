@@ -1099,27 +1099,6 @@ if pagina == "🏠 Resumen Ejecutivo":
         )
         st.plotly_chart(fig_roi, use_container_width=True)
 
-        # Caption con diagnóstico real — canales clipados + colapsados
-        _clipados = [c for c in CANALES
-                     if _mroi_sin_cap.get(c, 0) > _caps_industria.get(c, 999) + 0.5]
-        _colapsados_list = [c for c in CANALES if _mroi_sin_cap.get(c, 0) < 0.1]
-        _clip_txt = ", ".join(f"{c} ({_mroi_sin_cap[c]:.0f}×→{_caps_industria[c]:.1f}×)"
-                               for c in _clipados) or "ninguno"
-        _fuera_txt = ", ".join(f"{c} ({crudo:.0f}×)"
-                                 for c, crudo, _ in _fuera_escala) or "ninguno"
-        st.caption(
-            f"**Diagnóstico v4.1** · **Clipados por cap industria** "
-            f"({len(_clipados)}): {_clip_txt}. Los valores anotados en rojo "
-            f"({_fuera_txt}) son el Ridge crudo (fuera de escala) — mROI "
-            f"absurdos por correlación espuria con estacionalidad que v4.1 "
-            f"normaliza al cap industria. · ⚠ **Colapsados por "
-            f"multicolinealidad** ({len(_colapsados_list)}): "
-            f"{', '.join(_colapsados_list)} — Ridge les asigna coef=0 porque "
-            f"comparten varianza con otros canales; v4.1 les asigna su cap "
-            f"industria al redistribuir el excedente. Validación causal "
-            f"definitiva → **geo-holdouts** (ver docs/GEO_HOLDOUT_DESIGN.md)."
-        )
-
     # ── DONUT DE INGRESOS ESTIMADOS 2025 (base orgánica + 8 canales con mix recomendado) ──
     st.divider()
     st.markdown('<div class="section-title">Ingresos estimados 2025 · base orgánica + 8 canales</div>', unsafe_allow_html=True)
