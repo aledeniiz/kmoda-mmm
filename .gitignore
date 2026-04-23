@@ -1,0 +1,26 @@
+# Ignorar datasets crudos (>100 MB no caben en GitHub)
+datos/
+outputs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+.venv/
+venv/
+
+# IDEs
+.vscode/
+.idea/
+.DS_Store
+
+# Node (build_deck.js solo es herramienta local)
+node_modules/
+package-lock.json
+
+# Artefactos de la pptx local
+*.pptx
+
+# Claude
+.claude/
