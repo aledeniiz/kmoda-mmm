@@ -1526,7 +1526,7 @@ elif pagina == "📈 Resultados del Modelo":
                     return ""
 
             st.dataframe(
-                peso_df.style.applymap(_color_peso, subset=["Peso%_m"]),
+                peso_df.style.map(_color_peso, subset=["Peso%_m"]),
                 use_container_width=True, hide_index=True,
             )
             st.caption(
@@ -1815,7 +1815,7 @@ elif pagina == "💡 Simulador de Presupuesto":
         return ""
 
     st.dataframe(
-        tabla_df.style.applymap(_color_delta, subset=["Δ Inversión"]),
+        tabla_df.style.map(_color_delta, subset=["Δ Inversión"]),
         use_container_width=True, hide_index=True,
     )
 
@@ -2163,7 +2163,7 @@ elif pagina == "📊 Forecast DN vs DS":
         return ""
 
     st.dataframe(
-        pesos_table.style.applymap(color_senal, subset=["Señal"]),
+        pesos_table.style.map(color_senal, subset=["Señal"]),
         use_container_width=True, hide_index=True,
     )
 
@@ -2186,7 +2186,7 @@ elif pagina == "📊 Forecast DN vs DS":
             return ""
 
         st.dataframe(
-            tval_df.style.applymap(color_sig, subset=["Significativo"]),
+            tval_df.style.map(color_sig, subset=["Significativo"]),
             use_container_width=True, hide_index=True,
         )
 
